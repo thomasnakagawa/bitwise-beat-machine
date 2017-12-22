@@ -1,0 +1,16 @@
+.Drum-Track {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+  .beat-grid {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .left-column {
+    display: flex;
+    flex-direction: row;
+  }

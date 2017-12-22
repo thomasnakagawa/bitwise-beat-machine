@@ -1,0 +1,17 @@
+.Beat-Dot {
+  width: 10px;
+  height: 10px;
+  margin: 10px;
+  background-color: blue;
+  border-radius: 50%;
+}
+
+.Beat-Dot.playing {
+  background-color: yellow;
+}
+
+.Beat-Dot.active {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
