@@ -1,20 +1,26 @@
-import KickSound from '../sounds/kick.wav'
-import HihatSound from '../sounds/hat.wav'
-import SnareSound from '../sounds/snare.wav'
+import KickSound from '../assets/sounds/kick.wav'
+import HihatSound from '../assets/sounds/hat.wav'
+import SnareSound from '../assets/sounds/snare.wav'
+import KickIcon from '../assets/icons/kickIcon.svg'
+import SnareIcon from '../assets/icons/snareIcon.svg'
+import HihatIcon from '../assets/icons/hatIcon.svg'
 
 const Instrument = {
   acronymToObject: instrumentAcronym => ({
     "k": {
       soundFile: KickSound,
-      name: "Kick"
+      name: "Kick",
+      icon: KickIcon
     },
     "h": {
       soundFile: HihatSound,
-      name: "Hihat"
+      name: "Hihat",
+      icon: HihatIcon
     },
     "s": {
       soundFile: SnareSound,
-      name: "Snare"
+      name: "Snare",
+      icon: SnareIcon
     }
   }[instrumentAcronym]),
 

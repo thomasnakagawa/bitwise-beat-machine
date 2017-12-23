@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './BeatDot.css';
 
-const BeatDot = ({isPlaying, isActive}) => {
+const BeatDot = ({isPlaying, isActive, icon}) => {
   let cssClass = 'Beat-Dot';
   if (isPlaying) {
     cssClass += ' playing';
@@ -11,7 +11,9 @@ const BeatDot = ({isPlaying, isActive}) => {
     cssClass += ' active';
   }
   return (
-    <div className={cssClass}/>
+    <div className={cssClass}>
+      <img src={icon} alt="drum icon" />
+    </div>
   );
 };
 

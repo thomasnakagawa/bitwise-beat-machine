@@ -2,15 +2,38 @@
   display: flex;
   flex-direction: row;
   width: 100%;
+  border-bottom: 1px solid grey;
 }
 
   .beat-grid {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    flex-grow: 1;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
   }
 
   .left-column {
+    padding: 5px 10px;
+    min-width: 100px;
+    min-height: 50px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: orange;
   }
+
+    .left-column .top-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .left-column.bottom-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    }

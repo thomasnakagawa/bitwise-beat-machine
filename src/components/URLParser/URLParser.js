@@ -8,12 +8,13 @@ const parseTrackData = trackData => ({
 
 const URLParser = (props) => {
   const segments = props.match.params.trackState.split("-");
-  const byteA = segments[0];
-  const byteB = segments[1];
+  const bpm = parseInt(segments[0], 10)
+  const byteA = segments[1];
+  const byteB = segments[2];
 
   let tracks = [];
 
-  const encodedTracks = _.drop(segments, 2);
+  const encodedTracks = _.drop(segments, 3);
   encodedTracks.forEach(trackData => {
     tracks.push(parseTrackData(trackData));
   });
@@ -21,7 +22,7 @@ const URLParser = (props) => {
   return (
     <div>
       {React.Children.map(props.children, child => {
-        return React.cloneElement(child, {...props, byteA, byteB, tracks})
+        return React.cloneElement(child, {...props, byteA, byteB, tracks, bpm})
       })}
     </div>
   );

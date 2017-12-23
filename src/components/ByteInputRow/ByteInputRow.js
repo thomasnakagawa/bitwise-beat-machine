@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ByteInputRow = ({label, byte, onBitClicked}) => (
-  <div className="Byte-Input-row">
+  <div className="Byte-Input-row Drum-Track">
+    <div className="left-column">
     {label}
+    </div>
+    <div className="beat-grid">
     {byte.split("").map((bit, bitIndex) =>
       <button
         key={bitIndex}
@@ -14,6 +17,7 @@ const ByteInputRow = ({label, byte, onBitClicked}) => (
         {bit}
       </button>
     )}
+    </div>
   </div>
 );
 
