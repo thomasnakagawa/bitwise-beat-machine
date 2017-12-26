@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ByteInputRow from '../ByteInputRow/ByteInputRow';
 import DrumTrack from '../DrumTrack/DrumTrack';
-import SettingsPanel from '../SettingsPanel/SettingsPanel';
+import {PlaybackSettings, TempoSettings, BitSettings, TrackSettings} from '../SettingsPanel/SettingsPanel';
 import Instrument from '../../util/instrumentUtil';
 import Operator from '../../util/operatorUtil';
+import './DrumMachine.css';
 
 class DrumMachine extends React.Component {
   static propTypes = {
@@ -18,18 +19,17 @@ class DrumMachine extends React.Component {
     super(props);
 
     this.state = {
-      activeBitIndex: 0
+      activeBitIndex: -1,
     };
 
     this.setBeatTimer(props)
   }
 
   componentWillReceiveProps(nextProps) {
-    // TODO: redirect to home if props are invalid
-
-    if (nextProps.bpm !== this.props.bpm ||
+    if (this.beatTimer != null && (
+      nextProps.bpm !== this.props.bpm ||
       nextProps.byteA.length !== this.props.byteA.length ||
-      nextProps.byteB.length !== this.props.byteB.length)
+      nextProps.byteB.length !== this.props.byteB.length))
     {
       this.setBeatTimer(nextProps);
     }
@@ -41,19 +41,37 @@ class DrumMachine extends React.Component {
     }
     this.beatTimer = setInterval(() => {
       this.setState({activeBitIndex: ((this.state.activeBitIndex + 1) % this.getNumberOfBits(props))});
-    }, Math.floor(15000/props.bpm));
+    }, Math.floor(30000/props.bpm));
   }
 
   getNumberOfBits(props) {
     return Math.max(props.byteA.length, props.byteB.length);
   }
 
+  handleTogglePlayback() {
+    if (this.beatTimer == null) {
+      this.setBeatTimer(this.props);
+      this.setState({activeBitIndex: 0});
+
+    }else {
+      clearInterval(this.beatTimer);
+      this.beatTimer = null;
+      this.setState({activeBitIndex: -1});
+    }
+  }
+
   handleBPMChange(newBPM) {
+    let validatedBPM = newBPM;
+    if (validatedBPM < 1) {
+      validatedBPM = 1;
+    }else if (validatedBPM > 9999) {
+      validatedBPM = 9999;
+    }
     const oldURL = this.props.history.location.pathname;
     const URLsegments = oldURL.split("/");
     const gameStateSegments = URLsegments[2].split("-");
 
-    gameStateSegments[0] = newBPM;
+    gameStateSegments[0] = validatedBPM;
     URLsegments[2] = gameStateSegments.join("-");
 
     const newURL = URLsegments.join("/");
@@ -161,6 +179,46 @@ class DrumMachine extends React.Component {
     this.props.history.replace(newURL);
   }
 
+  handleRandomizeBits() {
+    const oldURL = this.props.history.location.pathname;
+    const URLsegments = oldURL.split("/");
+    const gameStateSegments = URLsegments[2].split("-");
+
+    // randomize bytes
+    gameStateSegments[1] = this.generateRandomBinaryNumber(gameStateSegments[1].length);
+    gameStateSegments[2] = this.generateRandomBinaryNumber(gameStateSegments[2].length);
+
+    URLsegments[2] = gameStateSegments.join("-");
+
+    const newURL = URLsegments.join("/");
+    this.props.history.replace(newURL);
+  }
+
+  handleRandomizeTracks() {
+    const oldURL = this.props.history.location.pathname;
+    const URLsegments = oldURL.split("/");
+    const gameStateSegments = URLsegments[2].split("-");
+
+    // randomize tracks
+    gameStateSegments.slice(3).forEach((segment, index) => {
+      gameStateSegments[index + 3] = Instrument.nameToAcronym(Instrument.names[Math.floor(Math.random()*Instrument.names.length)]) + 
+        Operator.nameToAcronym(Operator.names[Math.floor(Math.random()*Operator.names.length)]);
+    });
+
+    URLsegments[2] = gameStateSegments.join("-");
+
+    const newURL = URLsegments.join("/");
+    this.props.history.replace(newURL);
+  }
+
+  generateRandomBinaryNumber = length => {
+    let str = "";
+    for (let i = 0; i < length; i++) {
+      str += ["0", "1"][Math.floor(Math.random()*2)];
+    }
+    return str;
+  }
+
   canAddAnotherTrack = () => this.props.tracks.length <= 16;
   canAddBit = () => this.getNumberOfBits(this.props) <= 64;
   canRemoveBit = () => this.getNumberOfBits(this.props) > 2;
@@ -168,20 +226,38 @@ class DrumMachine extends React.Component {
   render() {
     return (
       <div className="Drum-Machine">
-        <SettingsPanel
-          bpm={this.props.bpm}
-          onBPMChange={bpm => {
-            this.handleBPMChange(bpm);
-          }}
-          onAddBit={() => {
-            this.handleAddBit();
-          }}
-          onRemoveBit={() => {
-            this.handleRemoveBit();
-          }}
-          canAddBit={this.canAddBit()}
-          canRemoveBit={this.canRemoveBit()}
-        />
+        <div className="Title-row">
+          <h1>Bitwise beat machine</h1>
+          <div className="button-area">
+            <a>share</a>
+            <a>about</a>
+            <a>help</a>
+          </div>
+        </div>
+        <div className="Settings-Panel">
+          <PlaybackSettings
+            isPlaying={this.beatTimer != null}
+            onTogglePlayback={this.handleTogglePlayback.bind(this)}     
+          />
+          <TempoSettings
+            bpm={this.props.bpm}
+            onBPMChange={this.handleBPMChange.bind(this)}
+          />
+          <TrackSettings
+            numberOfTracks={this.props.tracks.length}
+            onAddTrack={this.handleAddTrack.bind(this)}
+            canAddTrack={this.canAddAnotherTrack()}
+            onRandomizeTracks={this.handleRandomizeTracks.bind(this)}
+          />
+          <BitSettings
+            numberOfBits={this.getNumberOfBits(this.props)}
+            onAddBit={this.handleAddBit.bind(this)}
+            onRemoveBit={this.handleRemoveBit.bind(this)}
+            canAddBit={this.canAddBit()}
+            canRemoveBit={this.canRemoveBit()}
+            onRandomizeBits={this.handleRandomizeBits.bind(this)}
+          />
+        </div>
         <ByteInputRow
           label="A"
           byte={this.props.byteA}
@@ -215,12 +291,6 @@ class DrumMachine extends React.Component {
             }}
           />
         )}
-        <button
-          disabled={this.canAddAnotherTrack() === false}
-          onClick={() => {
-            this.handleAddTrack();
-          }}
-        >Add track</button>
       </div>
     );
   }

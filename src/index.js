@@ -10,7 +10,7 @@ ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Route exact path="/">
-        <Link to="/play/160-10010010-01101110-kad-hor-sxr">here</Link>
+        <Link to="/play/80-10010101-11001101-kad-hor-sno">here</Link>
       </Route>
       <Route path="/play/:trackState" children={({match, history}) => (
         <URLParser match={match} history={history}>

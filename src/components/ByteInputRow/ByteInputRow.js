@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ByteInputRow = ({label, byte, onBitClicked}) => (
-  <div className="Byte-Input-row Drum-Track">
+  <div className="Byte-Input-row">
     <div className="left-column">
     {label}
     </div>

@@ -59,6 +59,8 @@ class DrumTrack extends React.Component {
                 this.props.onRemoveTrack();
               }}
             >X</button>
+          </div>
+          <div className="controls-area">
             <select value={this.props.instrument.name} onChange={event => {
               this.props.onInstrumentSelect(event.target.value);
             }}>
@@ -66,17 +68,17 @@ class DrumTrack extends React.Component {
                 <option key={instrumentIndex} value={instrumentName}>{instrumentName}</option>
               )}
             </select>
-          </div>
-          <div className="bottom-row">
-            A
-            <select value={this.props.operator.name} onChange={event => {
-              this.props.onOperationSelect(event.target.value);
-            }}>
-              {Operator.names.map((operatorName, opIndex) => 
-                <option key={opIndex} value={operatorName}>{operatorName}</option>
-              )}
-            </select>
-            B
+            <div className="bottom-row">
+              A
+              <select value={this.props.operator.name} onChange={event => {
+                this.props.onOperationSelect(event.target.value);
+              }}>
+                {Operator.names.map((operatorName, opIndex) => 
+                  <option key={opIndex} value={operatorName}>{operatorName}</option>
+                )}
+              </select>
+              B
+            </div>
           </div>
         </div>
         <div className="beat-grid">

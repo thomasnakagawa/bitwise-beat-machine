@@ -20,7 +20,7 @@ const URLParser = (props) => {
   });
 
   return (
-    <div>
+    <div className="parser">
       {React.Children.map(props.children, child => {
         return React.cloneElement(child, {...props, byteA, byteB, tracks, bpm})
       })}

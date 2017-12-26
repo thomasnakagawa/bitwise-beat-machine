@@ -1,0 +1,20 @@
+.Title-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px;
+  min-height: 50px;
+}
+
+.Title-row h1 {
+  margin: 0;
+}
+
+.Title-row .button-area {
+
+}
+
+.Title-row .button-area a {
+  margin-right: 25px;
+}
