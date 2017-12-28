@@ -5,10 +5,13 @@
   align-items: center;
   padding: 4px;
   min-height: 50px;
+  background-color: var(--dark);
+  color: var(--light);
 }
 
 .Title-row h1 {
-  margin: 0;
+  margin: 0 10px;
+  letter-spacing: 1px;
 }
 
 .Title-row .button-area {
@@ -17,4 +20,16 @@
 
 .Title-row .button-area a {
   margin-right: 25px;
+}
+
+
+.Beat-Panel {
+  background-color: var(--medium-light);
+  border-radius: 2px;
+  padding: 4px;
+  margin: 10px 10px;
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }

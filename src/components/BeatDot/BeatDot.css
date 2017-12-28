@@ -1,8 +1,8 @@
 .Beat-Dot {
   width: 100%;
   height: 100%;
-  background-color: grey;
-  border-right: 1px solid teal;
+  background-color: var(--medium);
+  border-right: 1px solid var(--medium-light);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,7 +10,7 @@
 }
 
 .Beat-Dot.playing {
-  background-color: yellow;
+  background-color: var(--highlight);
 }
 
 .Beat-Dot > img {

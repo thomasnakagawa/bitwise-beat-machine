@@ -4,7 +4,7 @@ import './SettingsPanel.css';
 
 const PlaybackSettings = ({isPlaying, onTogglePlayback}) => (
   <div className="col">
-    <button onClick={() => {
+    <button className={"playback-button" + (isPlaying ? " negative-button" : " positive-button")} onClick={() => {
       onTogglePlayback();
     }}>{isPlaying ? "||" : ">"}</button>
   </div>
@@ -17,10 +17,12 @@ PlaybackSettings.propTypes = {
 
 const TempoSettings = ({bpm, onBPMChange}) => (
   <div className="col">
-    Tempo
-    <input type="number" value={bpm} onChange={event => {
-      onBPMChange(event.target.value);
-    }}/> bpm
+    <p>Tempo</p>
+    <div className="row">
+      <input type="number" value={bpm} step="10" onChange={event => {
+        onBPMChange(event.target.value);
+      }}/> bpm
+    </div>
   </div>
 )
 
@@ -31,7 +33,7 @@ TempoSettings.propTypes = {
 
 const BitSettings = ({numberOfBits, onAddBit, onRemoveBit, canAddBit, canRemoveBit, onRandomizeBits}) => (
   <div className="col">
-    {numberOfBits} bits
+    <p>{numberOfBits} bits</p>
     <button
       disabled={!canAddBit}
       onClick={() => {
@@ -63,7 +65,7 @@ BitSettings.propTypes = {
 
 const TrackSettings = ({numberOfTracks, onAddTrack, canAddTrack, onRandomizeTracks}) => (
   <div className="col">
-    {numberOfTracks} tracks
+    <p>{numberOfTracks} tracks</p>
     <button
       disabled={!canAddTrack}
       onClick={() => {

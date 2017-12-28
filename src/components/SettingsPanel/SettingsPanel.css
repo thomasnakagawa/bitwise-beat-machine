@@ -1,0 +1,42 @@
+.Settings-Panel {
+  margin: 0px 10px;
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  background-color: var(--medium-dark);
+  color: var(--light);
+  min-height: 100px;
+  border-radius: 2px;
+}
+
+.Settings-Panel p {
+  margin: 0;
+}
+
+  .Settings-Panel .col {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-right: 15px;
+  }
+
+  .Settings-Panel .col > * {
+    margin-bottom: 3px;
+  }
+
+  .Settings-Panel .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .Settings-Panel .row input {
+    width: 50px;
+    margin-right: 3px;
+  }
+
+.playback-button {
+  width: 43.4px;
+  height: 43.4px;
+}
+

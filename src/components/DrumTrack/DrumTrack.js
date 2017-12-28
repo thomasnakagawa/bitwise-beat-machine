@@ -55,6 +55,7 @@ class DrumTrack extends React.Component {
         <div className="left-column">
           <div className="top-row">
             <button
+              className="negative-button"
               onClick={() => {
                 this.props.onRemoveTrack();
               }}

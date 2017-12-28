@@ -1,5 +1,45 @@
-body {
+:root {
+  --dark: #13141C;
+  --medium-dark: #60616B;
+  --medium: #B0B3C4;
+  --medium-light: #7E808C;
+  --light: #F9F8F8;
+
+  --highlight: #FFD83F;
+  --blue: #30ABD1;
+  --positive: #B7DB64;
+  --positive-light: #C4EA6B;
+  --positive-dark: #A2C159;
+  --negative: #FE5F55;
+  --negative-light: #FF8077;
+  --negative-dark: #DB4136;
+
+  --left-col-width: 100px;
+}
+
+html, body, #root, .parser {
+  height: 100%;
+  min-height: 100%;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--dark);
+}
+
+.positive-button {
+  background-color: var(--positive);
+  color: var(--dark);
+  border-top-color: var(--positive-light);
+  border-left-color: var(--positive-light);
+  border-bottom-color: var(--positive-dark);
+  border-right-color: var(--positive-dark);
+}
+
+.negative-button {
+  background-color: var(--negative);
+  color: var(--dark);
+  border-top-color: var(--negative-light);
+  border-left-color: var(--negative-light);
+  border-bottom-color: var(--negative-dark);
+  border-right-color: var(--negative-dark);
 }
