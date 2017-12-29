@@ -1,11 +1,9 @@
 .Beat-Dot {
-  width: 100%;
-  height: 100%;
   background-color: var(--medium);
   border-right: 1px solid var(--medium-light);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: relative;
 }
 
   .Beat-Dot.playing {
@@ -13,8 +11,11 @@
   }
 
   .Beat-Dot > img {
-    max-width: 90%;
-    max-height: 50%;
+    position: absolute;
+    max-width: 80%;
+    max-height: 70%;
+    top: 20%;
+    left: 10%;
     transform: scale(0.0);
     -webkit-transition: transform 0.1s cubic-bezier(0.23, 1, 0.32, 1);
     transition:         transform 0.1s cubic-bezier(0.23, 1, 0.32, 1);

@@ -10,12 +10,23 @@
 .bit-button {
   border-radius: 0;
   background-color: var(--light);
+  padding: 0;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bit-button.playing {
+  background-color: var(--highlight) !important;
+  border-color: var(--highlight) !important;
 }
 
 .bit-button:before{
   font-size: 14px;
   font-weight: bolder;
   content: "0";
+  position: absolute;
 }
 
 .bit-button.on{

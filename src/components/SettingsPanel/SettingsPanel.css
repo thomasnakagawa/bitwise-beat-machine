@@ -3,6 +3,7 @@
   padding: 8px;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   background-color: var(--medium-dark);
   color: var(--light);
   min-height: 100px;
