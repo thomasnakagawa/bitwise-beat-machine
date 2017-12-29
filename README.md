@@ -1,7 +1,7 @@
 # Bitwise Beat Machine
 
 A drum machine that creates beats by using logical operations (AND, OR, XOR, etc) to determine when different drum hits play.  
-Play it [here](https://bitwise-beat-machine.thomasnakagawa.com/80-10010101-11001101-kad-hor-sno)  
+Play it [here](https://bitwise-beat-machine.thomasnakagawa.com)  
 
 ## Getting Started
 

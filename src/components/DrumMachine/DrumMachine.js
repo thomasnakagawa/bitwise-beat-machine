@@ -26,7 +26,7 @@ class DrumMachine extends React.Component {
     this.setBeatTimer(props)
 
     document.onkeypress = (e) => {
-      if (e.which == 32) {
+      if (e.which === 32) {
         this.handleTogglePlayback();
       }
     }
@@ -326,6 +326,7 @@ class DrumMachine extends React.Component {
           Tambourine by Artem  Kovyazin from the Noun Project<br/>
           Cowbell by Artem  Kovyazin from the Noun Project<br/>
           Cymbal by Artem  Kovyazin from the Noun Project<br/>
+          Drum by Hum from the Noun Project<br/>
           Sounds from http://www.musicradar.com/news/drums/sampleradar-1000-free-drum-samples-229460<br/>
         </ModalOverlay>
         <ModalOverlay
@@ -345,8 +346,8 @@ class DrumMachine extends React.Component {
           }}
         >
           <h2>Help</h2>
-          <a target="_blank" href="https://en.wikipedia.org/wiki/Bitwise_operation">Info on bitwise operations</a><br/>
-          <a target="_blank" href="http://whatis.techtarget.com/definition/logic-gate-AND-OR-XOR-NOT-NAND-NOR-and-XNOR">Info on logic gates</a><br/>
+          <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Bitwise_operation">Info on bitwise operations</a><br/>
+          <a target="_blank" rel="noopener noreferrer" href="http://whatis.techtarget.com/definition/logic-gate-AND-OR-XOR-NOT-NAND-NOR-and-XNOR">Info on logic gates</a><br/>
           <a href={Constants.DEFAULT_URL}>Reset to default</a><br/>
         </ModalOverlay>
       </div>
