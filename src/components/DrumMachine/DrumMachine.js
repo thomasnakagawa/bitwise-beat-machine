@@ -89,7 +89,8 @@ class DrumMachine extends React.Component {
 
     gameStateSegments.push(
       Instrument.nameToAcronym(Instrument.names[Math.floor(Math.random()*Instrument.names.length)]) + 
-      Operator.nameToAcronym(Operator.names[Math.floor(Math.random()*Operator.names.length)]));
+      Operator.nameToAcronym(Operator.names[Math.floor(Math.random()*Operator.names.length)])
+    );
     URLsegments[1] = gameStateSegments.join("-");
 
     const newURL = URLsegments.join("/");
@@ -230,9 +231,16 @@ class DrumMachine extends React.Component {
         <div className="Title-row">
           <h1>Bitwise beat machine</h1>
           <div className="button-area">
-            <a>share</a>
-            <a>about</a>
-            <a>help</a>
+            <button onClick={() => {
+              this.setState({overlay: "share"});
+              return false;
+            }}>share</button>
+            <button onClick={() => {
+              this.setState({overlay: "about"});
+            }}>about</button>
+            <button onClick={() => {
+              this.setState({overlay: "help"});
+            }}>help</button>
           </div>
         </div>
         <div className="Settings-Panel">
@@ -296,9 +304,60 @@ class DrumMachine extends React.Component {
             />
           )}
         </div>
+        <ModalOverlay
+          show={this.state.overlay === "about"}
+          onClose={() => {
+            this.setState({overlay: null});
+          }}
+        >
+          <h2>About</h2>
+          Created by <a href="http://thomasnakagawa.com">Thomas Nakagawa</a><br/>
+          Source on <a href="https://github.com/thomasnakagawa/bitwise-beat-machine">Github</a><br/>
+          <br/>
+          bass drum by Creaticca Creative Agency from the Noun Project<br/>
+          Cymbal by suib icon from the Noun Project<br/>
+          Snare Drum by Marta Ambrosetti from the Noun Project<br/>
+          Tambourine by Artem  Kovyazin from the Noun Project<br/>
+          Cowbell by Artem  Kovyazin from the Noun Project<br/>
+          Cymbal by Artem  Kovyazin from the Noun Project<br/>
+          Sounds from http://www.musicradar.com/news/drums/sampleradar-1000-free-drum-samples-229460<br/>
+        </ModalOverlay>
+        <ModalOverlay
+          show={this.state.overlay === "share"}
+          onClose={() => {
+            this.setState({overlay: null});
+          }}
+        >
+          <h2>Share</h2>
+          Share this beat by copying the following URL:<br/>
+          {window.location.href}
+        </ModalOverlay>
+        <ModalOverlay
+          show={this.state.overlay === "help"}
+          onClose={() => {
+            this.setState({overlay: null});
+          }}
+        >
+          <h2>Help</h2>
+          <a target="_blank" href="https://en.wikipedia.org/wiki/Bitwise_operation">Bitwise operations</a><br/>
+          <a target="_blank" href="http://whatis.techtarget.com/definition/logic-gate-AND-OR-XOR-NOT-NAND-NOR-and-XNOR">Logic gates</a><br/>
+        </ModalOverlay>
       </div>
     );
   }
 }
 
 export default DrumMachine;
+
+const ModalOverlay = ({children, show, onClose}) => {
+  if (show) {
+    return (
+      <div className="overlay">
+        {children}
+        <button className="positive-button" onClick={onClose}>ok</button>
+      </div>
+    );
+  }else {
+    return "";
+  }
+}

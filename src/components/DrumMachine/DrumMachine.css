@@ -24,8 +24,20 @@
 
   }
 
-  .Title-row .button-area a {
+  .Title-row .button-area button {
     margin-right: 25px;
+    background: none;
+    border: none;
+
+    color: var(--light);
+    font-size: 15px;
+  }
+
+  .Title-row .button-area button:hover {
+    color: var(--highlight);
+  }
+  .Title-row .button-area button:active {
+    color: var(--medium);
   }
 
 
@@ -39,3 +51,21 @@
   display: flex;
   flex-direction: column;
 }
+
+.overlay {
+  max-width: 90%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  background-color: var(--light);
+  color: var(--dark);
+  border: 4px solid var(--highlight);
+}
+
+  .overlay button {
+    margin: 10px;
+    float: right;
+    padding: 5px 15px;
+  }
