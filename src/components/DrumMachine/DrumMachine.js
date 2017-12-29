@@ -27,7 +27,10 @@ class DrumMachine extends React.Component {
 
     document.onkeypress = (e) => {
       if (e.which === 32) {
+        e.preventDefault();
+        e.stopPropagation();
         this.handleTogglePlayback();
+        return false;
       }
     }
   }

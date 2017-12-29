@@ -32,12 +32,5 @@ ByteInputRow.propTypes = {
 export default ByteInputRow;
 
 const BitButton = ({onClick, isOn, isPlaying}) => (
-  <div className={"onoffswitch"} onClick={onClick}>
-      <label className={"onoffswitch-label" + (isOn ? "" : " off") + (isPlaying ? " playing" : "")} htmlFor="myonoffswitch">
-          <span className={"onoffswitch-inner" + (isOn ? "" : " off") + (isPlaying ? " playing" : "")}></span>
-      </label>
-  </div>
-)
-
-
-
+  <button className={"bit-button" + (isPlaying ? " playing" : "") + (isOn ? " on" : "")} onClick={onClick}/>
+);
