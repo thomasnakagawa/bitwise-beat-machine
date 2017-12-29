@@ -66,7 +66,7 @@ const parseSements = segments => {
     const instrument = Instrument.acronymToObject(trackData[0]);
     const operator = Operator.acronymToObject(trackData.substring(1));
 
-    if (instrument === null || operator === null) {
+    if (instrument === undefined || operator === undefined) {
       throw new Error("Track invalid attribute");
     }
     tracks.push({instrument, operator});

@@ -26,6 +26,20 @@ html, body, #root, .parser {
   background-color: var(--dark);
 }
 
+button, input, select{
+  background-color: var(--light);
+  color: var(--dark);
+  font-family: 'Roboto', sans-serif;
+  border-radius: 5px;
+}
+
+button:disabled,
+button[disabled]{
+  background-color: var(--medium);
+  color: var(--medium-dark);
+  border-color: var(--medium);
+}
+
 .positive-button {
   background-color: var(--positive);
   color: var(--dark);

@@ -9,9 +9,9 @@
   border-radius: 2px;
 }
 
-.Settings-Panel p {
-  margin: 0;
-}
+  .Settings-Panel p {
+    margin: 0;
+  }
 
   .Settings-Panel .col {
     display: flex;
@@ -20,9 +20,9 @@
     margin-right: 15px;
   }
 
-  .Settings-Panel .col > * {
-    margin-bottom: 3px;
-  }
+    .Settings-Panel .col > * {
+      margin-bottom: 3px;
+    }
 
   .Settings-Panel .row {
     display: flex;
@@ -30,10 +30,10 @@
     align-items: center;
   }
 
-  .Settings-Panel .row input {
-    width: 50px;
-    margin-right: 3px;
-  }
+    .Settings-Panel .row input {
+      width: 50px;
+      margin-right: 3px;
+    }
 
 .playback-button {
   width: 43.4px;

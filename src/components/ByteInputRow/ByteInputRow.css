@@ -1,3 +1,11 @@
+.Byte-Input-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 40px;
+  border-top: 1px solid var(--medium-light);
+}
+
 .onoffswitch {
     position: relative;
     width: 100%;

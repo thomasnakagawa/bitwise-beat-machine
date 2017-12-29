@@ -1,3 +1,9 @@
+.Drum-Machine {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .Title-row {
   display: flex;
   flex-direction: row;
@@ -9,18 +15,18 @@
   color: var(--light);
 }
 
-.Title-row h1 {
-  margin: 0 10px;
-  letter-spacing: 1px;
-}
+  .Title-row h1 {
+    margin: 0 10px;
+    letter-spacing: 1px;
+  }
 
-.Title-row .button-area {
+  .Title-row .button-area {
 
-}
+  }
 
-.Title-row .button-area a {
-  margin-right: 25px;
-}
+  .Title-row .button-area a {
+    margin-right: 25px;
+  }
 
 
 .Beat-Panel {

@@ -4,7 +4,7 @@ import './ByteInputRow.css'
 
 const ByteInputRow = ({label, byte, onBitClicked, bitPlaying}) => (
   <div className="Byte-Input-row">
-    <div className="left-column">
+    <div className="left-column label">
     {label}
     </div>
     <div className="beat-grid">
