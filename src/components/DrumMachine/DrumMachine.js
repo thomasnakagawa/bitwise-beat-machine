@@ -24,6 +24,12 @@ class DrumMachine extends React.Component {
     };
 
     this.setBeatTimer(props)
+
+    document.onkeypress = (e) => {
+      if (e.which == 32) {
+        this.handleTogglePlayback();
+      }
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -339,8 +345,9 @@ class DrumMachine extends React.Component {
           }}
         >
           <h2>Help</h2>
-          <a target="_blank" href="https://en.wikipedia.org/wiki/Bitwise_operation">Bitwise operations</a><br/>
-          <a target="_blank" href="http://whatis.techtarget.com/definition/logic-gate-AND-OR-XOR-NOT-NAND-NOR-and-XNOR">Logic gates</a><br/>
+          <a target="_blank" href="https://en.wikipedia.org/wiki/Bitwise_operation">Info on bitwise operations</a><br/>
+          <a target="_blank" href="http://whatis.techtarget.com/definition/logic-gate-AND-OR-XOR-NOT-NAND-NOR-and-XNOR">Info on logic gates</a><br/>
+          <a href={Constants.DEFAULT_URL}>Reset to default</a><br/>
         </ModalOverlay>
       </div>
     );

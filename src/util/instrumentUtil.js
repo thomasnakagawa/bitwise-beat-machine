@@ -23,7 +23,7 @@ const Instrument = {
     },
     "h": {
       soundFile: HihatSound,
-      name: "Hihat",
+      name: "Hi-hat",
       icon: HihatIcon
     },
     "s": {
@@ -55,7 +55,7 @@ const Instrument = {
 
   nameToAcronym: instrumentName => ({
     "Kick": "k",
-    "Hihat": "h",
+    "Hi-hat": "h",
     "Snare": "s",
     "Tom-tom": "t",
     "Cymbal": "c",
@@ -64,7 +64,7 @@ const Instrument = {
   }[instrumentName]),
 
   names: [
-    "Kick", "Hihat", "Snare", "Tom-tom", "Cymbal", "Tambourine", "Cowbell"
+    "Kick", "Hi-hat", "Snare", "Tom-tom", "Cymbal", "Tambourine", "Cowbell"
   ]
 }
 
